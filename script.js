@@ -156,6 +156,8 @@ var menuTouch = function(event) {
 	}
 }
 
+alert("Screen Width: " + width + " Screen height: " + height);
+
 document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
 document.querySelector('canvas').addEventListener("click", menuTouch);
 window.addEventListener("load",function() {
