@@ -25,12 +25,18 @@ var createTweetButton = function() {
 	var linkText = document.createTextNode("Tweet This!");
 	a.appendChild(linkText);
 	a.title = "Tweet";
+	a.id="tweet"
 	a.href = "twitter://post?message=I%20just%20scored%20" + score + "%20on%20Tappy%20Bird!%20See%20if%20you%20can%20beat%me!" ;
 	a.style.marginTop = height/2+"px";
 	a.style.marginLeft = width/3+"px";
 	a.style.position = "relative";
 	a.style.zIndex = 2;
 	document.body.appendChild(a);
+}
+
+var removeTweetButton = function () {
+	var button = document.querySelector('#tweet');
+	button.parentNode.removeChild(button;)
 }
 
 var drawMenu = function() {
