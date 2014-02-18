@@ -140,8 +140,7 @@ var start = function (_survivalMode) {
 
 var onTouch = function(event) {
 	event.preventDefault();
-	alert("Clicked at: x: "+event.pageX + " y: " + event.pageY)
-	touch = {x:event.pageX, y:event.pageY}
+	touch = {x:event.pageX, y:event.pageY};
 	var cell = getCell(touch);
 	update(cell);
 };
@@ -156,8 +155,6 @@ var menuTouch = function(event) {
 		}
 	}
 }
-
-alert("Screen Width: " + width + " Screen height: " + height);
 
 document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
 document.querySelector('canvas').addEventListener("click", menuTouch);
