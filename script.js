@@ -14,8 +14,8 @@ birdImage.src = "images/faby.jpg";
 bgImage.src = "images/Sky_Blue.png";
 
 var canvas = document.createElement("canvas");
-canvas.width = 320;
-canvas.height = 480;
+canvas.width = width;
+canvas.height = height;
 document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
 
