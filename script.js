@@ -139,6 +139,7 @@ var start = function (_survivalMode) {
 
 var onTouch = function(event) {
 	event.preventDefault();
+	alert("Clicked at: x: "+event.pageX + " y: " + event.pageY)
 	touch = {x:event.pageX, y:event.pageY}
 	var cell = getCell(touch);
 	update(cell);
