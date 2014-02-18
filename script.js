@@ -146,10 +146,10 @@ var onTouch = function(event) {
 
 var menuTouch = function(event) {
 	console.log(event)
-	if(event.x > width/4){
-		if(event.y < 1.5*(height/5) && event.y > height/5){
+	if(event.pageX > width/4){
+		if(event.pageY < 1.5*(height/5) && event.pageY > height/5){
 			start(false);
-		} else if (event.y < 2.5*(height/5) && event.y > 2*(height/5)) {
+		} else if (event.pageY < 2.5*(height/5) && event.pageY > 2*(height/5)) {
 			start(true);
 		}
 	}
