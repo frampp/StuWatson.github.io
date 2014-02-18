@@ -39,7 +39,6 @@ birdImage.onload = function () {
 	birdReady = true;
 };
 
-
 var getCell = function (event) {
 	if(0<event.x && event.x <106) {
 		var xGrid = 0;
