@@ -3,8 +3,5 @@ canvas {
 	height: 100%;
 	position: absolute;
 }
-#tweet {
-	position: absolute;
-	z-index: 2;
-} 
+
 
