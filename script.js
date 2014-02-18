@@ -7,6 +7,8 @@ var activeCell,
     bgReady = false,
     birdImage = new Image(),
     bgImage = new Image();
+    width = screen.width;
+    height = screen.height;
     
 birdImage.src = "images/faby.jpg";
 bgImage.src = "images/Sky_Blue.png";
@@ -19,15 +21,15 @@ var ctx = canvas.getContext("2d");
 
 
 var drawBg = function() {
-	ctx.drawImage(bgImage, 0, 0, 320, 480);
+	ctx.drawImage(bgImage, 0, 0, width, height);
 	ctx.fill();
 };
 
 var drawMenu = function() {
 	drawBg();
 	ctx.font="28px sans-serif"; 
-	ctx.fillText("Timer Mode", 40, 100);
-	ctx.fillText("Survival Mode", 40, 200);
+	ctx.fillText("Timer Mode", width/4, height/5);
+	ctx.fillText("Survival Mode", width/4, 2*(height/5);
 }
 
 bgImage.onload = function () {
@@ -40,20 +42,20 @@ birdImage.onload = function () {
 };
 
 var getCell = function (event) {
-	if(0<event.x && event.x <106) {
+	if(0 < event.x && event.x < width/3 {
 		var xGrid = 0;
-	} else if (106<=event.x && event.x <212) {
-		var xGrid = 106;
-	} else if (212<=event.x && event.x <320) {
-		var xGrid = 212;
+	} else if ( width/3 <=event.x && event.x < 2*(width/3)) {
+		var xGrid = (width/3);
+	} else if ( 2*(width/3) <=event.x && event.x < width) {
+		var xGrid = 2*(width/3);
 	}
 
-	if(100<=event.y && event.y<200) {
+	if( (height/5) <=event.y && event.y< 2*(height/5)) {
 		var yGrid = 100;
-	} else if (200<=event.y && event.y <300) {
+	} else if (2*(height/5)<=event.y && event.y < 3*(height/5)) {
 		var yGrid = 200;
-	} else if (300<=event.y && event.y <400) {
-		var yGrid = 300;
+	} else if (3*(height/5)<=event.y && event.y < 4*(height/5)) {
+		var yGrid = 3*(height/5);
 	}
 
 	return {x: xGrid, y: yGrid};
@@ -143,10 +145,10 @@ var onTouch = function(event) {
 
 var menuTouch = function(event) {
 	console.log(event)
-	if(event.x > 40 ){
-		if(event.y < 130 && event.y > 100){
+	if(event.x > width/4){
+		if(event.y < 1.5*(height/5)) && event.y > height/5){
 			start(false);
-		} else if (event.y < 230 && event.y > 200) {
+		} else if (event.y < 2.5*(height/5) && event.y > 2*(height/5)) {
 			start(true);
 		}
 	}
