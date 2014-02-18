@@ -158,6 +158,13 @@ var menuTouch = function(event) {
 
 document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
 document.querySelector('canvas').addEventListener("click", menuTouch);
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
 
 
 
