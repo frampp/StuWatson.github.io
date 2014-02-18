@@ -96,9 +96,9 @@ var hitCheck = function(cell) {
 };
 
 
-var survivalUpdate = function() {
+var survivalUpdate = function(cell) {
 	console.log("Fucked")
-	alert("Game over")
+	alert("Game over @ "+cell.pageX+ " " + cell.pageY)
 };
 
 var timerUpdate = function () {
@@ -115,7 +115,7 @@ var update = function(cell) {
 		incrementSpeed();
 		newCell();
 	} else if (cell && survivalMode) {
-		survivalUpdate();
+		survivalUpdate(cell);
 	} 
 };
 
