@@ -20,10 +20,20 @@ canvas.height = height;
 document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
 
-
 var drawBg = function() {
 	ctx.drawImage(bgImage, 0, 0, width, height);
 	ctx.fill();
+};
+
+var menuTouch = function(event) {
+	console.log(event)
+	if(event.pageX > width/4){
+		if(event.pageY < 2*(height/5) && event.pageY > height/5){
+			start(false);
+		} else if (event.pageY < 3*(height/5) && event.pageY >= 2*(height/5)) {
+			start(true);
+		}
+	}
 };
 
 var drawMenu = function() {
@@ -31,7 +41,24 @@ var drawMenu = function() {
 	ctx.font="28px sans-serif"; 
 	ctx.fillText("Timer Mode", width/4, height/5);
 	ctx.fillText("Survival Mode", width/4, 2*(height/5));
+	document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
+	document.querySelector('canvas').addEventListener("click", menuTouch);
 }
+	
+var continueTouch = function(event) {
+	document.querySelector('canvas').removeEventListener("touchstart", continueTouch);
+	document.querySelector('canvas').removeEventListener("click", continueTouch);
+	drawMenu();	
+};
+
+var drawGameOver = function() {
+	drawBg();
+	ctx.font="28px sans-serif";
+	ctx.fillText("Game Over. Score: " + score, width/4, height/5);
+	ctx.fillText("Tap anywhere to continue", width/4. 2*(height/5));
+
+}
+
 
 bgImage.onload = function () {
 	bgReady = true;
@@ -99,7 +126,7 @@ var hitCheck = function(cell) {
 
 var survivalUpdate = function(cell) {
 	console.log("Fucked")
-	alert("Game over @ "+cell.x + " " + cell.y)
+	drawGameOver();
 };
 
 var timerUpdate = function () {
@@ -129,13 +156,14 @@ var addEventListeners = function () {
 
 var start = function (_survivalMode) {
 	addEventListeners();
-	speed = 2;
+	score = 0;
+	speed = 50;
 	newCell();
 	if(!_survivalMode){
 		console.log("Started Timer Mode")
 		speed = 50;
 		survivalMode = false;
-		setTimeout(function(){alert("Game over... Score: "+score);}, 60*1000)
+		setTimeout(drawGameOver, 60*1000)
 	}
 };
 
@@ -146,26 +174,7 @@ var onTouch = function(event) {
 	update(cell);
 };
 
-var menuTouch = function(event) {
-	console.log(event)
-	if(event.pageX > width/4){
-		if(event.pageY < (height/4) && event.pageY > height/5){
-			start(false);
-		} else if (event.pageY < 2.5*(height/4) && event.pageY > (height/4)) {
-			start(true);
-		}
-	}
-}
 
-document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
-document.querySelector('canvas').addEventListener("click", menuTouch);
-window.addEventListener("load",function() {
-	// Set a timeout...
-	setTimeout(function(){
-		// Hide the address bar!
-		window.scrollTo(0, 1);
-	}, 0);
-});
 
 
 
