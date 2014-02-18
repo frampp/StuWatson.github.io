@@ -8,13 +8,8 @@ var activeCell,
     birdImage = new Image(),
     bgImage = new Image(),
     scale = window.devicePixelRatio,
-    width,
-    height;
-
-
-setTimeout(function (){
-	width = screen.width*scale;
-    height = screen.height*scale;}, 1000)
+	width = window.innerWidth*scale,
+    height = window.innerHeight*scale;
 
     
 birdImage.src = "images/faby.jpg";
