@@ -37,6 +37,7 @@ var menuTouch = function(event) {
 };
 
 var drawMenu = function() {
+	clearTimeout(timeout);
 	drawBg();
 	ctx.font="28px sans-serif"; 
 	ctx.fillText("Timer Mode", width/4, height/5);
@@ -55,7 +56,7 @@ var drawGameOver = function() {
 	drawBg();
 	ctx.font="28px sans-serif";
 	ctx.fillText("Game Over. Score: " + score, width/4, height/5);
-	setTimeout(function(){
+	timeout = setTimeout(function(){
 	document.querySelector('canvas').addEventListener("touchstart", continueTouch);
 	document.querySelector('canvas').addEventListener("click", continueTouch);		
 	ctx.fillText("Tap anywhere to continue", width/4, 2*(height/5));
@@ -133,6 +134,7 @@ var survivalUpdate = function(cell) {
 };
 
 var timerUpdate = function () {
+	clearTimeout(timeout);
 	timeout = setTimeout(update, (100/speed)*1000);
 };
 
@@ -166,7 +168,7 @@ var start = function (_survivalMode) {
 		console.log("Started Timer Mode")
 		speed = 50;
 		survivalMode = false;
-		setTimeout(drawGameOver, 60*1000)
+		timeout = setTimeout(drawGameOver, 60*1000)
 	}
 };
 
