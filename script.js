@@ -51,9 +51,9 @@ var getCell = function (event) {
 	}
 
 	if( (height/5) <=event.y && event.y< 2*(height/5)) {
-		var yGrid = 100;
+		var yGrid = height/5;
 	} else if (2*(height/5)<=event.y && event.y < 3*(height/5)) {
-		var yGrid = 200;
+		var yGrid = 2*(height/5);
 	} else if (3*(height/5)<=event.y && event.y < 4*(height/5)) {
 		var yGrid = 3*(height/5);
 	}
@@ -66,7 +66,7 @@ var drawBird = function (cell) {
 		drawBg();
 		ctx.drawImage(birdImage, cell.x+6, cell.y+16);
 		ctx.font="28px sans-serif";
-		ctx.fillText("Score"+score, 30, 40)
+		ctx.fillText("Score"+score, width/5, height/6)
 		ctx.fill();
 	}
 };
@@ -74,8 +74,8 @@ var drawBird = function (cell) {
 
 var newCell = function () {
 	clearTimeout(timeout)
-	var x = Math.random()*320;
-	var y = 100+Math.random()*300;
+	var x = Math.random()*width;
+	var y = (height/5)+Math.random()*(3*height/5);
 	var cell = getCell({x:x, y:y});
 	activeCell = cell;
 	drawBird(cell);
