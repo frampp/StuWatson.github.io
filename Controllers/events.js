@@ -21,5 +21,5 @@ var timerUpdate = function () {
 var addEventListeners = function (listener) {
 	removeEventListeners();
 	document.querySelector('canvas').addEventListener("touchstart", listener, false);
-	document.querySelector('canvas').addEventListener("click", listener);
+	// document.querySelector('canvas').addEventListener("click", listener);
 };
