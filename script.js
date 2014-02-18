@@ -55,7 +55,7 @@ var drawGameOver = function() {
 	drawBg();
 	ctx.font="28px sans-serif";
 	ctx.fillText("Game Over. Score: " + score, width/4, height/5);
-	ctx.fillText("Tap anywhere to continue", width/4. 2*(height/5));
+	ctx.fillText("Tap anywhere to continue", width/4, 2*(height/5));
 	document.querySelector('canvas').addEventListener("touchstart", continueTouch);
 	document.querySelector('canvas').addEventListener("click", continueTouch);
 }
