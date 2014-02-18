@@ -121,6 +121,8 @@ var update = function(cell) {
 };
 
 var addEventListeners = function () {
+	document.querySelector('canvas').removeEventListener("touchstart", menuTouch, false);
+	document.querySelector('canvas').removeEventListener("click", menuTouch);
 	document.querySelector('canvas').addEventListener("touchstart", onTouch, false);
 	document.querySelector('canvas').addEventListener("click", onTouch);
 }
@@ -135,7 +137,6 @@ var start = function (_survivalMode) {
 		survivalMode = false;
 		setTimeout(function(){alert("Game over... Score: "+score);}, 60*1000)
 	}
-	timerUpdate();
 };
 
 var onTouch = function(event) {
@@ -148,9 +149,9 @@ var onTouch = function(event) {
 var menuTouch = function(event) {
 	console.log(event)
 	if(event.pageX > width/4){
-		if(event.pageY < 1.5*(height/5) && event.pageY > height/5){
+		if(event.pageY < (height/4) && event.pageY > height/5){
 			start(false);
-		} else if (event.pageY < 2.5*(height/5) && event.pageY > 2*(height/5)) {
+		} else if (event.pageY < 2.5*(height/4) && event.pageY > (height/4)) {
 			start(true);
 		}
 	}
