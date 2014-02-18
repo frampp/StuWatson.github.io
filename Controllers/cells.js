@@ -18,13 +18,18 @@ var getCell = function (event) {
 	return {x: xGrid, y: yGrid};
 };
 
-var newCell = function () {
+var newCell = function (start) {
 	clearTimeouts()
+	console.log(start)
+	if(!start){
+		var old = activeCell;
+	}
+	console.log(old);
 	var x = Math.random()*width;
 	var y = (height/5)+Math.random()*(3*height/5);
 	var cell = getCell({x:x, y:y});
 	activeCell = cell;
-	drawBird(cell);
+	drawBird(cell, old);
 	timerUpdate();
 };
 

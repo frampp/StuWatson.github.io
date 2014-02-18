@@ -7,11 +7,11 @@ var onTouch = function(event) {
 
 var menuTouch = function(event) {
 	console.log(event)
-	removeTweetButton();
 	start(menuCheck());
 };
 
 var continueTouch = function(event) {
 	removeEventListeners();
+	removeTweetButton();
 	drawMenu();	
 };

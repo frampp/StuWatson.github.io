@@ -16,7 +16,7 @@ var update = function(cell) {
 	if(!cell && survivalMode){
 		survivalUpdate();
 	} else if(!cell) {
-		newCell();
+		newCell(true);
 		incrementSpeed();
 	} else if(cell && hitCheck(cell)){
 		incrementSpeed();
@@ -30,7 +30,7 @@ var start = function (_survivalMode) {
 	addEventListeners(onTouch);
 	score = 0;
 	speed = 50;
-	newCell();
+	newCell(true);
 	if(!_survivalMode){
 		console.log("Started Timer Mode")
 		speed = 50;

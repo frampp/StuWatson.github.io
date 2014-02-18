@@ -1,12 +1,15 @@
 var birdReady = false,
     bgReady = false,
+    oldReady = false,
     birdImage = new Image(),
     bgImage = new Image(),
+    oldImage = new Image();
 	width = window.innerWidth,
     height = window.innerHeight;
 
 birdImage.src = "images/faby.jpg";
 bgImage.src = "images/Sky_Blue.png";
+oldImage.src = "images/bruised.jpg";
 
 var canvas = document.createElement("canvas");
 canvas.width = width;
@@ -36,7 +39,7 @@ var createTweetButton = function() {
 
 var removeTweetButton = function () {
 	var button = document.querySelector('#tweet');
-	button.parentNode.removeChild(button;)
+	button.parentNode.removeChild(button);
 }
 
 var drawMenu = function() {
@@ -74,10 +77,20 @@ birdImage.onload = function () {
 	birdReady = true;
 };
 
-var drawBird = function (cell) {
+oldImage.onload = function () {
+	oldReady = true;
+}
+
+var drawBird = function (cell, old) {
 	canvas.width = canvas.width;
+	console.log(old);
+	console.log(cell);
 	if(birdReady && bgReady) {
 		drawBg();
+		if(old && oldReady){
+			console.log("Bird drawing")
+			ctx.drawImage(oldImage, old.x+6, old.y+16);
+		}
 		ctx.drawImage(birdImage, cell.x+6, cell.y+16);
 		ctx.font="28px sans-serif";
 		ctx.fillText("Score"+score, width/5, height/6)
