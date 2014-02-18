@@ -98,7 +98,7 @@ var hitCheck = function(cell) {
 
 var survivalUpdate = function(cell) {
 	console.log("Fucked")
-	alert("Game over @ "+cell.x " " + cell.y)
+	alert("Game over @ "+cell.x + " " + cell.y)
 };
 
 var timerUpdate = function () {
