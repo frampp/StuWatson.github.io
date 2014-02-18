@@ -1,5 +1,5 @@
 var activeCell,
-    timeout,
+    timeouts = [],
     score = 0,
     speed = 10,
     survivalMode = true,
@@ -25,6 +25,21 @@ var drawBg = function() {
 	ctx.fill();
 };
 
+var clearTimeouts = function() {
+	for (var i = 0; i<timeouts.length; i++) {
+		clearTimeout(timeouts[i]);
+	}
+};
+
+var removeEventListeners = function() {
+	document.querySelector('canvas').removeEventListener("touchstart", continueTouch);
+	document.querySelector('canvas').removeEventListener("click", continueTouch);
+	document.querySelector('canvas').removeEventListener("touchstart", onTouch, false);
+	document.querySelector('canvas').removeEventListener("click", onTouch);
+	document.querySelector('canvas').removeEventListener("touchstart", menuTouch, false);
+	document.querySelector('canvas').removeEventListener("click", menuTouch);
+};
+
 var menuTouch = function(event) {
 	console.log(event)
 	if(event.pageX > width/4){
@@ -37,18 +52,18 @@ var menuTouch = function(event) {
 };
 
 var drawMenu = function() {
-	clearTimeout(timeout);
+	clearTimeouts();
 	drawBg();
 	ctx.font="28px sans-serif"; 
 	ctx.fillText("Timer Mode", width/4, height/5);
 	ctx.fillText("Survival Mode", width/4, 2*(height/5));
+	removeEventListeners();
 	document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
 	document.querySelector('canvas').addEventListener("click", menuTouch);
 }
 	
 var continueTouch = function(event) {
-	document.querySelector('canvas').removeEventListener("touchstart", continueTouch);
-	document.querySelector('canvas').removeEventListener("click", continueTouch);
+	removeEventListeners();
 	drawMenu();	
 };
 
@@ -56,11 +71,13 @@ var drawGameOver = function() {
 	drawBg();
 	ctx.font="28px sans-serif";
 	ctx.fillText("Game Over. Score: " + score, width/4, height/5);
-	timeout = setTimeout(function(){
+	clearTimeouts();
+	timeouts.push(setTimeout(function(){
+	removeEventListeners();
 	document.querySelector('canvas').addEventListener("touchstart", continueTouch);
 	document.querySelector('canvas').addEventListener("click", continueTouch);		
 	ctx.fillText("Tap anywhere to continue", width/4, 2*(height/5));
-	}, 1000);
+	}, 1000));
 }
 
 
@@ -105,7 +122,7 @@ var drawBird = function (cell) {
 
 
 var newCell = function () {
-	clearTimeout(timeout)
+	clearTimeouts()
 	var x = Math.random()*width;
 	var y = (height/5)+Math.random()*(3*height/5);
 	var cell = getCell({x:x, y:y});
@@ -133,9 +150,9 @@ var survivalUpdate = function(cell) {
 	drawGameOver();
 };
 
-var timerUpdate = function () {
-	clearTimeout(timeout);
-	timeout = setTimeout(update, (100/speed)*1000);
+var timerUpdate = function () {	
+	clearTimeouts();
+	timeouts.push(setTimeout(update, (100/speed)*1000));
 };
 
 var update = function(cell) {
@@ -153,8 +170,7 @@ var update = function(cell) {
 };
 
 var addEventListeners = function () {
-	document.querySelector('canvas').removeEventListener("touchstart", menuTouch, false);
-	document.querySelector('canvas').removeEventListener("click", menuTouch);
+	removeEventListeners();
 	document.querySelector('canvas').addEventListener("touchstart", onTouch, false);
 	document.querySelector('canvas').addEventListener("click", onTouch);
 }
@@ -168,7 +184,7 @@ var start = function (_survivalMode) {
 		console.log("Started Timer Mode")
 		speed = 50;
 		survivalMode = false;
-		timeout = setTimeout(drawGameOver, 60*1000)
+		setTimeout(drawGameOver, 60*1000)
 	}
 };
 
