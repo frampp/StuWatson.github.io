@@ -139,7 +139,8 @@ var start = function (_survivalMode) {
 
 var onTouch = function(event) {
 	event.preventDefault();
-	var cell = getCell(event);
+	touch = {x:pageX, y:pageY}
+	var cell = getCell(touch);
 	update(cell);
 };
 
