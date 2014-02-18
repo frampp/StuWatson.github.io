@@ -6,9 +6,10 @@ var activeCell,
     birdReady = false,
     bgReady = false,
     birdImage = new Image(),
-    bgImage = new Image();
-    width = screen.width;
-    height = screen.height;
+    bgImage = new Image(),
+    scale = window.devicePixelRatio,
+    width = screen.width*scale,
+    height = screen.height*scale;
     
 birdImage.src = "images/faby.jpg";
 bgImage.src = "images/Sky_Blue.png";
