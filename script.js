@@ -28,7 +28,7 @@ var drawBg = function() {
 var drawMenu = function() {
 	drawBg();
 	ctx.font="28px sans-serif"; 
-	ctx.fillText("Timer Mode", width/4, height/5));
+	ctx.fillText("Timer Mode", width/4, height/5);
 	ctx.fillText("Survival Mode", width/4, 2*(height/5));
 }
 
