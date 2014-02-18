@@ -42,7 +42,7 @@ birdImage.onload = function () {
 };
 
 var getCell = function (event) {
-	if(0 < event.x && event.x < width/3 {
+	if(0 < event.x && event.x < width/3 ){
 		var xGrid = 0;
 	} else if ( width/3 <=event.x && event.x < 2*(width/3)) {
 		var xGrid = (width/3);
@@ -146,7 +146,7 @@ var onTouch = function(event) {
 var menuTouch = function(event) {
 	console.log(event)
 	if(event.x > width/4){
-		if(event.y < 1.5*(height/5)) && event.y > height/5){
+		if(event.y < 1.5*(height/5) && event.y > height/5){
 			start(false);
 		} else if (event.y < 2.5*(height/5) && event.y > 2*(height/5)) {
 			start(true);
