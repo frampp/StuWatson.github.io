@@ -12,11 +12,9 @@ birdApp.height = window.innerHeight;
 
 birdApp.createCanvas = function() {
 
-	birdApp.canvas = document.createElement("canvas");
-	birdApp.canvas.width = birdApp.width;
-	birdApp.canvas.height = birdApp.height;
-	birdApp.canvas.style.position = "absolute";
-	document.body.appendChild(birdApp.canvas);
+	birdApp.canvas = document.querySelector("canvas");
+        birdApp.width = birdApp.canvas.width
+        birdApp.height = birdApp.canvas.height
 	birdApp.ctx = birdApp.canvas.getContext("2d");
 };
 
