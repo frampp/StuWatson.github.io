@@ -50,10 +50,9 @@ birdApp.start = function (_survivalMode) {
 	birdApp.speed = 50;
 	birdApp.countdown(3);
 	if(!_survivalMode){
-		console.log("Started Timer Mode")
 		birdApp.speed = 50;
 		birdApp.survivalMode = false;
-		setTimeout(birdApp.drawGameOver, 6075*10)
+		setTimeout(birdApp.drawGameOver, 6075*10);
 	}
 };
 

@@ -87,12 +87,9 @@ birdApp.drawBird = function (cell, old) {
 	var width = birdApp.width;
 	var height = birdApp.height;
 	birdApp.canvas.width = birdApp.canvas.width;
-	console.log(old);
-	console.log(cell);
 	if(birdApp.birdReady && birdApp.bgReady) {
 		birdApp.drawBg();
 		if(old && birdApp.oldReady){
-			console.log("Bird drawing")
 			birdApp.ctx.drawImage(birdApp.oldImage, old.x+6, old.y+16);
 		}
 		birdApp.ctx.drawImage(birdApp.birdImage, cell.x+6, cell.y+16);
