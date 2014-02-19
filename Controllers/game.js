@@ -34,7 +34,7 @@ birdApp.countdown = function(n) {
 	if(n !=0) {
 		birdApp.ctx.fillText(n, birdApp.width/2, birdApp.height/3);
 		n--;
-		setTimeout(function(){birdApp.drawCountdown(n)}, 1000);
+		setTimeout(function(){birdApp.countdown(n)}, 1000);
 	} else {
 		birdApp.ctx.fillText("Go!", birdApp.width/2, birdApp.height/3);
 		setTimeout(function(){
