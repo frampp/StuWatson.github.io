@@ -64,8 +64,7 @@ birdApp.drawGameOver = function() {
 	birdApp.clearTimeouts();
 	birdApp.createTweetButton();
 	birdApp.timeouts.push(setTimeout(function(){
-	document.querySelector('canvas').addEventListener("touchstart", birdApp.continueTouch);
-	document.querySelector('canvas').addEventListener("click", birdApp.continueTouch);		
+	birdApp.addEventListeners(birdApp.continueTouch);	
 	birdApp.ctx.fillText("Tap anywhere to continue", birdApp.width/4, 2*(birdApp.height/5));
 	}, 1000));
 }
