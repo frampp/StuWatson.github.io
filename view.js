@@ -45,10 +45,6 @@ birdApp.removeTweetButton = function () {
 birdApp.drawMenu = function() {
 	birdApp.clearTimeouts();
 	birdApp.drawBg();
-	birdApp.ctx.font="28px sans-serif"; 
-	birdApp.ctx.fillText("Timer Mode", birdApp.width/4, birdApp.height/5);
-	birdApp.ctx.fillText("Survival Mode", birdApp.width/4, 2*(birdApp.height/5));
-	birdApp.removeEventListeners();
 	document.querySelector('canvas').addEventListener("touchstart", birdApp.menuTouch, false);
 	document.querySelector('canvas').addEventListener("click", birdApp.menuTouch);
 };
