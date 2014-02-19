@@ -1,4 +1,4 @@
-birdApp.input = "touchstasrt"
+birdApp.input = "touchstart"
 // (function () { birdApp.input = 'touchend' in window ? "touchend" : "touchstart" }());
 
 birdApp.removeEventListeners = function() {
