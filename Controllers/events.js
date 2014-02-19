@@ -1,4 +1,4 @@
-(function () { birdApp.input = window.touchend ? "touchend" : "click" }());
+(function () { birdApp.input = 'touchend' in window ? "touchend" : "click" }());
 
 birdApp.removeEventListeners = function() {
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.continueTouch, false);
