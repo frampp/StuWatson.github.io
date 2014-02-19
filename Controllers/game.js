@@ -28,16 +28,32 @@ birdApp.update = function(cell) {
 	} 
 };
 
+birdApp.countdown = function(n) {
+	birdApp.drawBg();
+	birdApp.ctx.font="28px sans-serif"; 
+	if(n !=0) {
+		birdApp.ctx.fillText(n, birdApp.width/2, birdApp.height/3);
+		n--;
+		setTimeout(function(){birdApp.drawCountdown(n)}, 1000);
+	} else {
+		birdApp.ctx.fillText("Go!", birdApp.width/2, birdApp.height/3);
+		setTimeout(function(){
+			birdApp.addEventListeners(birdApp.onTouch);
+			birdApp.newCell(true)
+		}, 750);
+	}
+};
+
 birdApp.start = function (_survivalMode) {
-	birdApp.addEventListeners(birdApp.onTouch);
+	birdApp.removeEventListeners();
 	birdApp.score = 0;
 	birdApp.speed = 50;
-	birdApp.newCell(true);
+	birdApp.countdown(3);
 	if(!_survivalMode){
 		console.log("Started Timer Mode")
 		birdApp.speed = 50;
 		birdApp.survivalMode = false;
-		setTimeout(birdApp.drawGameOver, 60*1000)
+		setTimeout(birdApp.drawGameOver, 6075*10)
 	}
 };
 
