@@ -1,14 +1,12 @@
-birdApp.birdReady = false,
-birdApp.bgReady = false,
-birdApp.oldReady = false,
-birdApp.birdImage = new Image(),
-birdApp.bgImage = new Image(),
+birdApp.birdReady = false;
+birdApp.bgReady = false;
+birdApp.oldReady = false;
+birdApp.birdImage = new Image();
+birdApp.bgImage = new Image();
 birdApp.oldImage = new Image();
-birdApp.width = window.innerWidth,
-birdApp.height = window.innerHeight;
-	birdApp.birdImage.src = "images/faby.jpg";
-	birdApp.bgImage.src = "images/Sky_Blue.png";
-	birdApp.oldImage.src = "images/bruised.jpg";
+birdApp.birdImage.src = "images/faby.jpg";
+birdApp.bgImage.src = "images/Sky_Blue.png";
+birdApp.oldImage.src = "images/bruised.jpg";
 
 birdApp.createCanvas = function() {
 
