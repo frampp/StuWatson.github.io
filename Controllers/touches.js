@@ -3,7 +3,7 @@ birdApp.onTouch = function(event) {
 	touch = {x:event.pageX, y:event.pageY};
 	var cell = birdApp.getCell(touch);
 	console.log("Game Touched")
-	alert("game touched")
+	alert(birdApp.input)
 	birdApp.update(cell);
 };
 
