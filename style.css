@@ -2,4 +2,29 @@ html, body {
   margin: 0;
 }
 
+a.btn {
+  position: absolute;
+  z-index: 2;
+  font-size:40px;
+}
+
+a.tweet-button {
+
+}
+
+a.timer-btn {
+  width:320px;
+  text-align:center;
+  top:50px;
+  left:0px;
+}
+
+a.survival-btn {
+  width:320px;
+  text-align:center;
+  top:150px;
+  left:0px;
+}
+
+
 
