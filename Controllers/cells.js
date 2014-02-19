@@ -18,7 +18,6 @@ birdApp.getCell = function (event) {
 	} else if (3*(height/5)<=event.y && event.y < 4*(height/5)) {
 		yGrid = 3*(height/5);
 	}
-
 	return {x: xGrid, y: yGrid};
 };
 
