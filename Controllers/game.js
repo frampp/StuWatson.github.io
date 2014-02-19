@@ -1,41 +1,43 @@
-var activeCell,
-    timeouts = [],
-    score = 0,
-    speed = 10,
-    survivalMode = true;
+var birdApp = birdApp || {};
 
-var incrementSpeed = function () {
-	speed++;
+birdApp.activeCell,
+birdApp.timeouts = [],
+birdApp.score = 0,
+birdApp.speed = 10,
+birdApp.survivalMode = true;
+
+birdApp.incrementSpeed = function () {
+	birdApp.speed++;
 };
 
-var survivalUpdate = function(cell) {
-	drawGameOver();
+birdApp.survivalUpdate = function(cell) {
+	birdApp.drawGameOver();
 };
 
-var update = function(cell) {
-	if(!cell && survivalMode){
-		survivalUpdate();
+birdApp.update = function(cell) {
+	if(!cell && birdApp.survivalMode){
+		birdApp.survivalUpdate();
 	} else if(!cell) {
-		newCell(true);
-		incrementSpeed();
-	} else if(cell && hitCheck(cell)){
-		incrementSpeed();
-		newCell();
-	} else if (cell && survivalMode) {
-		survivalUpdate(cell);
+		birdApp.newCell(true);
+		birdApp.incrementSpeed();
+	} else if(cell && birdApp.hitCheck(cell)){
+		birdApp.incrementSpeed();
+		birdApp.newCell();
+	} else if (cell && birdApp.survivalMode) {
+		birdApp.survivalUpdate(cell);
 	} 
 };
 
-var start = function (_survivalMode) {
-	addEventListeners(onTouch);
-	score = 0;
-	speed = 50;
-	newCell(true);
+birdApp.start = function (_survivalMode) {
+	birdApp.addEventListeners(birdApp.onTouch);
+	birdApp.score = 0;
+	birdApp.speed = 50;
+	birdApp.newCell(true);
 	if(!_survivalMode){
 		console.log("Started Timer Mode")
-		speed = 50;
-		survivalMode = false;
-		setTimeout(drawGameOver, 60*1000)
+		birdApp.speed = 50;
+		birdApp.survivalMode = false;
+		setTimeout(birdApp.drawGameOver, 60*1000)
 	}
 };
 

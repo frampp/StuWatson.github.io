@@ -1,99 +1,105 @@
-var birdReady = false,
-    bgReady = false,
-    oldReady = false,
-    birdImage = new Image(),
-    bgImage = new Image(),
-    oldImage = new Image();
-	width = window.innerWidth,
-    height = window.innerHeight;
+birdApp.birdReady = false,
+birdApp.bgReady = false,
+birdApp.oldReady = false,
+birdApp.birdImage = new Image(),
+birdApp.bgImage = new Image(),
+birdApp.oldImage = new Image();
+birdApp.width = window.innerWidth,
+birdApp.height = window.innerHeight;
+	birdApp.birdImage.src = "images/faby.jpg";
+	birdApp.bgImage.src = "images/Sky_Blue.png";
+	birdApp.oldImage.src = "images/bruised.jpg";
 
-birdImage.src = "images/faby.jpg";
-bgImage.src = "images/Sky_Blue.png";
-oldImage.src = "images/bruised.jpg";
+birdApp.createCanvas = function() {
 
-var canvas = document.createElement("canvas");
-canvas.width = width;
-canvas.height = height;
-canvas.style.position = "absolute";
-document.body.appendChild(canvas);
-var ctx = canvas.getContext("2d");
-
-var drawBg = function() {
-	ctx.drawImage(bgImage, 0, 0, width, height);
-	ctx.fill();
+	birdApp.canvas = document.createElement("canvas");
+	birdApp.canvas.width = birdApp.width;
+	birdApp.canvas.height = birdApp.height;
+	birdApp.canvas.style.position = "absolute";
+	document.body.appendChild(birdApp.canvas);
+	birdApp.ctx = birdApp.canvas.getContext("2d");
 };
 
-var createTweetButton = function() {
+birdApp.createCanvas();
+
+birdApp.drawBg = function() {
+	birdApp.ctx.drawImage(birdApp.bgImage, 0, 0, birdApp.width, birdApp.height);
+	birdApp.ctx.fill();
+};
+
+birdApp.createTweetButton = function() {
 	var a = document.createElement('a');
 	var linkText = document.createTextNode("Tweet This!");
 	a.appendChild(linkText);
 	a.title = "Tweet";
 	a.id="tweet"
-	a.href = "twitter://post?message=I%20just%20scored%20" + score + "%20on%20Tappy%20Bird!%20See%20if%20you%20can%20beat%me!" ;
-	a.style.marginTop = height/2+"px";
-	a.style.marginLeft = width/3+"px";
+	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Tappy%20Bird!%20See%20if%20you%20can%20beat%me!" ;
+	a.style.marginTop = birdApp.height/2+"px";
+	a.style.marginLeft = birdApp.width/3+"px";
 	a.style.position = "relative";
 	a.style.zIndex = 2;
 	document.body.appendChild(a);
 }
 
-var removeTweetButton = function () {
+birdApp.removeTweetButton = function () {
 	var button = document.querySelector('#tweet');
 	button.parentNode.removeChild(button);
 }
 
-var drawMenu = function() {
-	clearTimeouts();
-	drawBg();
-	ctx.font="28px sans-serif"; 
-	ctx.fillText("Timer Mode", width/4, height/5);
-	ctx.fillText("Survival Mode", width/4, 2*(height/5));
-	removeEventListeners();
-	document.querySelector('canvas').addEventListener("touchstart", menuTouch, false);
-	document.querySelector('canvas').addEventListener("click", menuTouch);
+birdApp.drawMenu = function() {
+	birdApp.clearTimeouts();
+	birdApp.drawBg();
+	birdApp.ctx.font="28px sans-serif"; 
+	birdApp.ctx.fillText("Timer Mode", birdApp.width/4, birdApp.height/5);
+	birdApp.ctx.fillText("Survival Mode", birdApp.width/4, 2*(birdApp.height/5));
+	birdApp.removeEventListeners();
+	document.querySelector('canvas').addEventListener("touchstart", birdApp.menuTouch, false);
+	document.querySelector('canvas').addEventListener("click", birdApp.menuTouch);
 };
 
-var drawGameOver = function() {
-	drawBg();
-	ctx.font="28px sans-serif";
-	ctx.fillText("Game Over. Score: " + score, width/4, height/5);
-	removeEventListeners();
-	clearTimeouts();
-	createTweetButton();
-	timeouts.push(setTimeout(function(){
-	document.querySelector('canvas').addEventListener("touchstart", continueTouch);
-	document.querySelector('canvas').addEventListener("click", continueTouch);		
-	ctx.fillText("Tap anywhere to continue", width/4, 2*(height/5));
+birdApp.drawGameOver = function() {
+	birdApp.drawBg();
+	birdApp.ctx.font="28px sans-serif";
+	birdApp.ctx.fillText("Game Over. Score: " + birdApp.score, birdApp.width/4, birdApp.height/5);
+	birdApp.removeEventListeners();
+	birdApp.clearTimeouts();
+	birdApp.createTweetButton();
+	birdApp.timeouts.push(setTimeout(function(){
+	document.querySelector('canvas').addEventListener("touchstart", birdApp.continueTouch);
+	document.querySelector('canvas').addEventListener("click", birdApp.continueTouch);		
+	birdApp.ctx.fillText("Tap anywhere to continue", birdApp.width/4, 2*(birdApp.height/5));
 	}, 1000));
 }
 
 
-bgImage.onload = function () {
-	bgReady = true;
-	drawMenu();
+birdApp.bgImage.onload = function () {
+	birdApp.bgReady = true;
+	birdApp.drawMenu();
 };
 
-birdImage.onload = function () {
-	birdReady = true;
+birdApp.birdImage.onload = function () {
+	birdApp.birdReady = true;
 };
 
-oldImage.onload = function () {
-	oldReady = true;
+birdApp.oldImage.onload = function () {
+	birdApp.oldReady = true;
 }
 
-var drawBird = function (cell, old) {
-	canvas.width = canvas.width;
+birdApp.drawBird = function (cell, old) {
+	var width = birdApp.width;
+	var height = birdApp.height;
+	birdApp.canvas.width = birdApp.canvas.width;
 	console.log(old);
 	console.log(cell);
-	if(birdReady && bgReady) {
-		drawBg();
-		if(old && oldReady){
+	if(birdApp.birdReady && birdApp.bgReady) {
+		birdApp.drawBg();
+		if(old && birdApp.oldReady){
 			console.log("Bird drawing")
-			ctx.drawImage(oldImage, old.x+6, old.y+16);
+			birdApp.ctx.drawImage(birdApp.oldImage, old.x+6, old.y+16);
 		}
-		ctx.drawImage(birdImage, cell.x+6, cell.y+16);
-		ctx.font="28px sans-serif";
-		ctx.fillText("Score"+score, width/5, height/6)
-		ctx.fill();
+		birdApp.ctx.drawImage(birdApp.birdImage, cell.x+6, cell.y+16);
+		birdApp.ctx.font="28px sans-serif";
+		birdApp.ctx.fillText("Score"+birdApp.score, width/5, birdApp.height/6)
+		birdApp.ctx.fill();
 	}
 };

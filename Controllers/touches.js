@@ -1,19 +1,20 @@
-var onTouch = function(event) {
+birdApp.onTouch = function(event) {
 	event.preventDefault();
 	touch = {x:event.pageX, y:event.pageY};
-	var cell = getCell(touch);
+	var cell = birdApp.getCell(touch);
 	console.log("Game Touched")
-	update(cell);
+	birdApp.update(cell);
 };
 
-var menuTouch = function(event) {
+birdApp.menuTouch = function(event) {
 	console.log(event)
-	start(menuCheck());
+	var touch = {x:event.pageX, y:event.pageY}
+	birdApp.start(birdApp.menuCheck(touch));
 	console.log("Menu Touched");
 };
 
-var continueTouch = function(event) {
-	removeEventListeners();
-	removeTweetButton();
-	drawMenu();	
+birdApp.continueTouch = function(event) {
+	birdApp.removeEventListeners();
+	birdApp.removeTweetButton();
+	birdApp.drawMenu();	
 };

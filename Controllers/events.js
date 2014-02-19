@@ -1,25 +1,25 @@
-var removeEventListeners = function() {
-	document.querySelector('canvas').removeEventListener("touchstart", continueTouch);
-	document.querySelector('canvas').removeEventListener("click", continueTouch);
-	document.querySelector('canvas').removeEventListener("touchstart", onTouch, false);
-	document.querySelector('canvas').removeEventListener("click", onTouch);
-	document.querySelector('canvas').removeEventListener("touchstart", menuTouch, false);
-	document.querySelector('canvas').removeEventListener("click", menuTouch);
+birdApp.removeEventListeners = function() {
+	document.querySelector('canvas').removeEventListener("touchstart", birdApp.continueTouch);
+	document.querySelector('canvas').removeEventListener("click", birdApp.continueTouch);
+	document.querySelector('canvas').removeEventListener("touchstart", birdApp.onTouch, false);
+	document.querySelector('canvas').removeEventListener("click", birdApp.onTouch);
+	document.querySelector('canvas').removeEventListener("touchstart", birdApp.menuTouch, false);
+	document.querySelector('canvas').removeEventListener("click", birdApp.menuTouch);
 };
 
-var clearTimeouts = function() {
-	for (var i = 0; i<timeouts.length; i++) {
-		clearTimeout(timeouts[i]);
+birdApp.clearTimeouts = function() {
+	for (i = 0; i<birdApp.timeouts.length; i++) {
+		clearTimeout(birdApp.timeouts[i]);
 	}
 };
 
-var timerUpdate = function () {	
-	clearTimeouts();
-	timeouts.push(setTimeout(update, (100/speed)*1000));
+birdApp.timerUpdate = function () {	
+	birdApp.clearTimeouts();
+	birdApp.timeouts.push(setTimeout(birdApp.update, (100/birdApp.speed)*1000));
 };
 
-var addEventListeners = function (listener) {
-	removeEventListeners();
+birdApp.addEventListeners = function (listener) {
+	birdApp.removeEventListeners();
 	document.querySelector('canvas').addEventListener("touchstart", listener, false);
-	// document.querySelector('canvas').addEventListener("click", listener);
+	document.querySelector('canvas').addEventListener("click", listener);
 };
