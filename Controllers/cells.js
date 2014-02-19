@@ -22,6 +22,8 @@ birdApp.getCell = function (event) {
 };
 
 birdApp.randomise = function () {
+	var width = birdApp.width;
+	var height = birdApp.height;
 	var x = Math.random()*width;
 	var y = (height/5)+Math.random()*(3*height/5);
 	var cell = birdApp.getCell({x:x, y:y});
@@ -29,8 +31,6 @@ birdApp.randomise = function () {
 };
 
 birdApp.newCell = function (start) {
-	var width = birdApp.width;
-	var height = birdApp.height;
 	birdApp.clearTimeouts()
 	var cell = birdApp.randomise();
 	if(!start){
