@@ -1,10 +1,10 @@
 birdApp.removeEventListeners = function() {
-	document.querySelector('canvas').removeEventListener("touchstart", birdApp.continueTouch);
-	document.querySelector('canvas').removeEventListener("click", birdApp.continueTouch);
-	document.querySelector('canvas').removeEventListener("touchstart", birdApp.onTouch, false);
-	document.querySelector('canvas').removeEventListener("click", birdApp.onTouch);
-	document.querySelector('canvas').removeEventListener("touchstart", birdApp.menuTouch, false);
-	document.querySelector('canvas').removeEventListener("click", birdApp.menuTouch);
+	birdApp.removeEventListener("touchstart", birdApp.continueTouch);
+	birdApp.removeEventListener("click", birdApp.continueTouch);
+	birdApp.removeEventListener("touchstart", birdApp.onTouch, false);
+	birdApp.removeEventListener("click", birdApp.onTouch);
+	birdApp.removeEventListener("touchstart", birdApp.menuTouch, false);
+	birdApp.removeEventListener("click", birdApp.menuTouch);
 };
 
 birdApp.clearTimeouts = function() {
@@ -20,6 +20,6 @@ birdApp.timerUpdate = function () {
 
 birdApp.addEventListeners = function (listener) {
 	birdApp.removeEventListeners();
-	document.querySelector('canvas').addEventListener("touchstart", listener, false);
-	document.querySelector('canvas').addEventListener("click", listener);
+	birdApp.addEventListener("touchstart", listener, false);
+	birdApp.addEventListener("click", listener);
 };

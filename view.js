@@ -6,9 +6,9 @@ birdApp.bgImage = new Image(),
 birdApp.oldImage = new Image();
 birdApp.width = window.innerWidth,
 birdApp.height = window.innerHeight;
-	birdApp.birdImage.src = "images/faby.jpg";
-	birdApp.bgImage.src = "images/Sky_Blue.png";
-	birdApp.oldImage.src = "images/bruised.jpg";
+birdApp.birdImage.src = "images/faby.jpg";
+birdApp.bgImage.src = "images/Sky_Blue.png";
+birdApp.oldImage.src = "images/bruised.jpg";
 
 birdApp.createCanvas = function() {
 
@@ -33,7 +33,7 @@ birdApp.createTweetButton = function() {
 	a.appendChild(linkText);
 	a.title = "Tweet";
 	a.id="tweet"
-	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Tappy%20Bird!%20See%20if%20you%20can%20beat%me!" ;
+	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Smack%20%20Bird!%20See%20if%20you%20can%20beat%20me!" ;
 	a.style.marginTop = birdApp.height/2+"px";
 	a.style.marginLeft = birdApp.width/3+"px";
 	a.style.position = "relative";
