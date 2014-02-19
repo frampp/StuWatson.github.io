@@ -12,11 +12,11 @@ birdApp.oldImage.src = "images/bruised.jpg";
 
 birdApp.createCanvas = function() {
 
-	birdApp.canvas = document.createElement("canvas");
-	birdApp.canvas.width = birdApp.width;
-	birdApp.canvas.height = birdApp.height;
-	birdApp.canvas.style.position = "absolute";
-	document.body.appendChild(birdApp.canvas);
+	var canvas = document.createElement("canvas");
+	canvas.width = birdApp.width;
+	canvas.height = birdApp.height;
+	canvas.style.position = "absolute";
+	birdApp.canvas = document.body.appendChild(canvas);
 	birdApp.ctx = birdApp.canvas.getContext("2d");
 };
 
@@ -53,8 +53,7 @@ birdApp.drawMenu = function() {
 	birdApp.ctx.fillText("Timer Mode", birdApp.width/4, birdApp.height/5);
 	birdApp.ctx.fillText("Survival Mode", birdApp.width/4, 2*(birdApp.height/5));
 	birdApp.removeEventListeners();
-	document.querySelector('canvas').addEventListener("touchstart", birdApp.menuTouch, false);
-	document.querySelector('canvas').addEventListener("click", birdApp.menuTouch);
+	birdApp.addEventListeners(birdApp.menuTouch);
 };
 
 birdApp.drawGameOver = function() {

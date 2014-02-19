@@ -21,17 +21,22 @@ birdApp.getCell = function (event) {
 	return {x: xGrid, y: yGrid};
 };
 
+birdApp.randomise = function () {
+	var x = Math.random()*width;
+	var y = (height/5)+Math.random()*(3*height/5);
+	var cell = birdApp.getCell({x:x, y:y});
+	return cell
+};
+
 birdApp.newCell = function (start) {
 	var width = birdApp.width;
 	var height = birdApp.height;
 	birdApp.clearTimeouts()
-	var x = Math.random()*width;
-	var y = (height/5)+Math.random()*(3*height/5);
-	var cell = birdApp.getCell({x:x, y:y});
+	var cell = birdApp.randomise();
 	if(!start){
 		var old = birdApp.activeCell;
 		if(cell.x == birdApp.activeCell.x && cell.y == birdApp.activeCell.y){
-			var cell = birdApp.newCell(start);
+			var cell = birdApp.randomise();
 		}
 	}
 	birdApp.activeCell = cell;
