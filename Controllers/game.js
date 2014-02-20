@@ -1,17 +1,17 @@
 var birdApp = birdApp || {};
 
-birdApp.activeCell,
-birdApp.timeouts = [],
-birdApp.score = 0,
-birdApp.speed = 10,
-birdApp.survivalMode = true;
+birdApp.activeCell;
+birdApp.survivalMode;
+birdApp.timeouts = [];
+birdApp.score = 0;
+birdApp.speed = 10;
 
 birdApp.incrementSpeed = function () {
 	birdApp.speed++;
 };
 
 birdApp.survivalUpdate = function(cell) {
-	birdApp.drawGameOver();
+	birdApp.gameOver();
 };
 
 birdApp.update = function(cell) {
@@ -44,15 +44,30 @@ birdApp.countdown = function(n) {
 	}
 };
 
-birdApp.start = function (_survivalMode) {
+birdApp.highScore = function () {
+	var gameType = birdApp.survivalMode ? "survHighScore" : "timeHighScore";
+	if(!localStorage[gameType] || parseInt(localStorage[gameType])<birdApp.score){
+		localStorage.setItem(gameType, birdApp.score);
+	}
+	
+};
+
+birdApp.gameOver = function() {
+	birdApp.highScore();
+	birdApp.drawGameOver();
+}
+
+birdApp.start = function (mode) {
 	birdApp.removeEventListeners();
 	birdApp.score = 0;
 	birdApp.speed = 50;
 	birdApp.countdown(3);
-	if(!_survivalMode){
+	if(!mode.survival){
 		birdApp.speed = 50;
 		birdApp.survivalMode = false;
-		setTimeout(birdApp.drawGameOver, 6075*10);
+		setTimeout(birdApp.gameOver, 6075*10);
+	} else {
+		birdApp.survivalMode = true;
 	}
 };
 

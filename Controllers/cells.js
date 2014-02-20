@@ -57,9 +57,9 @@ birdApp.menuCheck = function(event) {
 	var height = birdApp.height;
 	if(event.x > width/4){
 		if(event.y < 2*(height/5) && event.y > height/5){
-			return(false);
+			return({survival: false});
 		} else if (event.y < 3*(height/5) && event.y >= 2*(height/5)) {
-			return(true);
+			return({survival: true});
 		}
 	}
 }

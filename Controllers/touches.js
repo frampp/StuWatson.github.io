@@ -7,7 +7,10 @@ birdApp.onTouch = function(event) {
 
 birdApp.menuTouch = function(event) {
 	var touch = {x:event.pageX, y:event.pageY}
-	birdApp.start(birdApp.menuCheck(touch));
+	var menuPress = birdApp.menuCheck(touch);
+	if(menuPress){
+		birdApp.start(menuPress);
+	}
 };
 
 birdApp.continueTouch = function(event) {

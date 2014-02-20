@@ -39,12 +39,12 @@ birdApp.createTweetButton = function() {
 	a.style.position = "relative";
 	a.style.zIndex = 2;
 	document.body.appendChild(a);
-}
+};
 
 birdApp.removeTweetButton = function () {
 	var button = document.querySelector('#tweet');
 	button.parentNode.removeChild(button);
-}
+};
 
 birdApp.drawMenu = function() {
 	birdApp.clearTimeouts();
@@ -56,10 +56,13 @@ birdApp.drawMenu = function() {
 	birdApp.addEventListeners(birdApp.menuTouch);
 };
 
+
+
 birdApp.drawGameOver = function() {
 	birdApp.drawBg();
 	birdApp.ctx.font="28px sans-serif";
 	birdApp.ctx.fillText("Game Over. Score: " + birdApp.score, birdApp.width/4, birdApp.height/5);
+	birdApp.ctx.fillText("High Score: " + (birdApp.survivalMode ? localStorage.survHighScore : localStorage.timeHighScore), birdApp.width/4, 3*(birdApp.height/5));
 	birdApp.removeEventListeners();
 	birdApp.clearTimeouts();
 	birdApp.createTweetButton();
@@ -67,7 +70,7 @@ birdApp.drawGameOver = function() {
 	birdApp.addEventListeners(birdApp.continueTouch);	
 	birdApp.ctx.fillText("Tap anywhere to continue", birdApp.width/4, 2*(birdApp.height/5));
 	}, 1000));
-}
+};
 
 
 birdApp.bgImage.onload = function () {
@@ -81,7 +84,7 @@ birdApp.birdImage.onload = function () {
 
 birdApp.oldImage.onload = function () {
 	birdApp.oldReady = true;
-}
+};
 
 birdApp.drawBird = function (cell, old) {
 	var width = birdApp.width;
