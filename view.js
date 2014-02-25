@@ -33,7 +33,7 @@ birdApp.createTweetButton = function() {
 	a.appendChild(linkText);
 	a.title = "Tweet";
 	a.id="tweet"
-	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Smack%20%20Bird!%20See%20if%20you%20can%20beat%20me!";
+	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Smack%20A%20Bird!%20See%20if%20you%20can%20beat%20me!";
 	a.style.top = (2*(birdApp.height/3))+"px";
 	a.style.marginLeft = birdApp.width/4+"px";
 	a.style.position = "relative";
