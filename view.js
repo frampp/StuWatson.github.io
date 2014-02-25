@@ -33,9 +33,9 @@ birdApp.createTweetButton = function() {
 	a.appendChild(linkText);
 	a.title = "Tweet";
 	a.id="tweet"
-	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Smack%20%20Bird!%20See%20if%20you%20can%20beat%20me!" ;
-	a.style.marginTop = birdApp.height/2+"px";
-	a.style.marginLeft = birdApp.width/3+"px";
+	a.href = "twitter://post?message=I%20just%20scored%20" + birdApp.score + "%20on%20Smack%20%20Bird!%20See%20if%20you%20can%20beat%20me!";
+	a.style.top = (2*(birdApp.height/3))+"px";
+	a.style.marginLeft = birdApp.width/4+"px";
 	a.style.position = "relative";
 	a.style.zIndex = 2;
 	document.body.appendChild(a);
@@ -49,11 +49,18 @@ birdApp.removeTweetButton = function () {
 birdApp.drawMenu = function() {
 	birdApp.clearTimeouts();
 	birdApp.drawBg();
-	birdApp.ctx.font="28px sans-serif"; 
+	birdApp.ctx.font="28px sans-serif";
 	birdApp.ctx.fillText("Timer Mode", birdApp.width/4, birdApp.height/5);
 	birdApp.ctx.fillText("Survival Mode", birdApp.width/4, 2*(birdApp.height/5));
 	birdApp.removeEventListeners();
 	birdApp.addEventListeners(birdApp.menuTouch);
+	birdApp.ctx.font="20px sans-serif"; 
+	birdApp.ctx.fillText("Survival Best\n"+ (localStorage.survHighScore ? localStorage.survHighScore : 0),
+		birdApp.width/9,
+		7*(birdApp.height/8));
+	birdApp.ctx.fillText("Timer Best\n"+ (localStorage.timeHighScore ? localStorage.timeHighScore : 0),
+		5*(birdApp.width/9), 
+		7*(birdApp.height/8));
 };
 
 
