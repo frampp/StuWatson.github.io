@@ -9,12 +9,19 @@ birdApp.menuTouch = function(event) {
 	var touch = {x:event.pageX, y:event.pageY}
 	var menuPress = birdApp.menuCheck(touch);
 	if(menuPress){
-		birdApp.start(menuPress);
+		if(menuPress.howToPlay){
+			birdApp.drawHowToPlay();
+		} else {
+			birdApp.start(menuPress);
+		}
 	}
 };
 
-birdApp.continueTouch = function(event) {
+birdApp.continueTouch = function(event, tweet) {
 	birdApp.removeEventListeners();
-	birdApp.removeTweetButton();
+	if(tweet){
+		birdApp.removeTweetButton();
+	}
 	birdApp.drawMenu();	
 };
+

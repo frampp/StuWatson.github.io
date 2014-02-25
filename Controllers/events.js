@@ -5,6 +5,7 @@ birdApp.removeEventListeners = function() {
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.continueTouch, false);
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.onTouch, false);
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.menuTouch, false);
+	birdApp.canvas.removeEventListener(birdApp.input, birdApp.howToPlayTouch, false);
 
 };
 

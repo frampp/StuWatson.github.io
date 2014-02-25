@@ -60,6 +60,8 @@ birdApp.menuCheck = function(event) {
 			return({survival: false});
 		} else if (event.y < 3*(height/5) && event.y >= 2*(height/5)) {
 			return({survival: true});
+		} else if(event.y <4*(height/5) && event.y >= 3*(height/5)) {
+			return({howToPlay: true})
 		}
 	}
 }

@@ -52,6 +52,7 @@ birdApp.drawMenu = function() {
 	birdApp.ctx.font="28px sans-serif";
 	birdApp.ctx.fillText("Timer Mode", birdApp.width/4, birdApp.height/5);
 	birdApp.ctx.fillText("Survival Mode", birdApp.width/4, 2*(birdApp.height/5));
+	birdApp.ctx.fillText("How To Play", birdApp.width/4, 3*(birdApp.height/5));
 	birdApp.removeEventListeners();
 	birdApp.addEventListeners(birdApp.menuTouch);
 	birdApp.ctx.font="20px sans-serif"; 
@@ -61,6 +62,14 @@ birdApp.drawMenu = function() {
 	birdApp.ctx.fillText("Timer Best\n"+ (localStorage.timeHighScore ? localStorage.timeHighScore : 0),
 		5*(birdApp.width/9), 
 		7*(birdApp.height/8));
+};
+
+birdApp.drawHowToPlay = function () {
+	birdApp.drawBg();
+	birdApp.removeEventListeners();
+	birdApp.ctx.font="28px sans-serif";
+	birdApp.ctx.fillText("Rendering draw How to Play", birdApp.width/4, birdApp.height/5);
+	birdApp.addEventListeners(birdApp.continueTouch, false);
 };
 
 
@@ -74,7 +83,7 @@ birdApp.drawGameOver = function() {
 	birdApp.clearTimeouts();
 	birdApp.createTweetButton();
 	birdApp.timeouts.push(setTimeout(function(){
-	birdApp.addEventListeners(birdApp.continueTouch);	
+	birdApp.addEventListeners(birdApp.continueTouch, true);	
 	birdApp.ctx.fillText("Tap anywhere to continue", birdApp.width/4, 2*(birdApp.height/5));
 	}, 1000));
 };
