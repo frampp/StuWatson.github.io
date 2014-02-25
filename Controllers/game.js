@@ -10,13 +10,9 @@ birdApp.incrementSpeed = function () {
 	birdApp.speed++;
 };
 
-birdApp.survivalUpdate = function(cell) {
-	birdApp.gameOver();
-};
-
 birdApp.update = function(cell) {
 	if(!cell && birdApp.survivalMode){
-		birdApp.survivalUpdate();
+		birdApp.gameOver();
 	} else if(!cell) {
 		birdApp.newCell(true);
 		birdApp.incrementSpeed();
@@ -24,7 +20,7 @@ birdApp.update = function(cell) {
 		birdApp.incrementSpeed();
 		birdApp.newCell();
 	} else if (cell && birdApp.survivalMode) {
-		birdApp.survivalUpdate(cell);
+		birdApp.gameOver();
 	} 
 };
 

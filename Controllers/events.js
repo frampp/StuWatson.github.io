@@ -1,12 +1,11 @@
-// birdApp.input = (function () { return  !!window.touchend ? "touchend" : "click" }());
+// birdApp.input = (function () { return  !!window.ontouchend ? "touchend" : "click" }());
 birdApp.input = "touchstart";
 
 birdApp.removeEventListeners = function() {
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.continueTouch, false);
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.onTouch, false);
 	birdApp.canvas.removeEventListener(birdApp.input, birdApp.menuTouch, false);
-	birdApp.canvas.removeEventListener(birdApp.input, birdApp.howToPlayTouch, false);
-
+	birdApp.canvas.removeEventListener(birdApp.input, birdApp.helpTouch, false);
 };
 
 birdApp.clearTimeouts = function() {

@@ -17,11 +17,15 @@ birdApp.menuTouch = function(event) {
 	}
 };
 
-birdApp.continueTouch = function(event, tweet) {
+birdApp.continueTouch = function(e) {
 	birdApp.removeEventListeners();
-	if(tweet){
-		birdApp.removeTweetButton();
-	}
+	birdApp.removeHtml(["#tweet"]);
 	birdApp.drawMenu();	
+};
+
+birdApp.helpTouch = function(e) {
+	birdApp.removeEventListeners();
+	birdApp.removeHtml(["#helpText"]);
+	birdApp.drawMenu();
 };
 
