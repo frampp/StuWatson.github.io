@@ -25,7 +25,3 @@ birdApp.bgImage.onload = function () {
 	birdApp.bgReady = true;
 	birdApp.drawMenu();
 };
-
-
-
-
