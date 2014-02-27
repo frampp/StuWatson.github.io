@@ -9,8 +9,9 @@ birdApp.canvas.height = birdApp.height;
 birdApp.ctx = birdApp.canvas.getContext("2d");
 
 birdApp.drawBg = function() {
-	birdApp.ctx.drawImage(birdApp.bgImage, 0, 0, birdApp.width, birdApp.height);
-	birdApp.ctx.fill();
+	birdApp.canvas.width = birdApp.canvas.width;
+	//birdApp.ctx.drawImage(birdApp.bgImage, 0, 0, birdApp.width, birdApp.height);
+	//birdApp.ctx.fill();
 };
 
 birdApp.removeHtml = function (array) {

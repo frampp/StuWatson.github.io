@@ -9,15 +9,16 @@ birdApp.createTweetButton = function() {
 };
 
 birdApp.drawGameOver = function() {
+	var textLeft = birdApp.width/9;
 	birdApp.drawBg();
-	birdApp.ctx.font="28px sans-serif";
-	birdApp.ctx.fillText("Game Over. Score: " + birdApp.score, birdApp.width/4, birdApp.height/5);
-	birdApp.ctx.fillText("High Score: " + (birdApp.survivalMode ? localStorage.survHighScore : localStorage.timeHighScore), birdApp.width/4, 3*(birdApp.height/5));
+	birdApp.ctx.font="20px sans-serif";
+	birdApp.ctx.fillText("Game Over. Score: " + birdApp.score, textLeft, birdApp.height/5);
+	birdApp.ctx.fillText("High Score: " + (birdApp.survivalMode ? localStorage.survHighScore : localStorage.timeHighScore), textLeft, 3*(birdApp.height/5));
 	birdApp.removeEventListeners();
 	birdApp.clearTimeouts();
 	birdApp.createTweetButton();
 	birdApp.timeouts.push(setTimeout(function(){
 	birdApp.addEventListeners(birdApp.continueTouch, true);	
-	birdApp.ctx.fillText("Tap anywhere to continue", birdApp.width/4, 2*(birdApp.height/5));
+	birdApp.ctx.fillText("Tap anywhere to continue", textLeft, 2*(birdApp.height/5));
 	}, 1000));
 };

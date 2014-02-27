@@ -23,6 +23,13 @@ canvas {
 #help {
 	display:none;
 }
+html { 
+  background: url(images/Sky_Blue.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
 
