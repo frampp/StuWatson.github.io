@@ -12,13 +12,14 @@ birdApp.drawBird = function (cell, old) {
 	if(birdApp.birdReady && birdApp.bgReady) {
 		birdApp.drawBg();
 		if(old && birdApp.oldReady){
-			birdApp.ctx.drawImage(birdApp.oldImage, old.x+6, old.y+16);
+			birdApp.ctx.drawImage(birdApp.oldImage, old.x, old.y, width/5, height/9);
 		}
-		birdApp.ctx.drawImage(birdApp.birdImage, cell.x+6, cell.y+16);
+		birdApp.ctx.drawImage(birdApp.birdImage, cell.x, cell.y, width/5, height/9);
 		birdApp.ctx.font="28px sans-serif";
 		birdApp.ctx.fillText("Score"+birdApp.score, width/5, birdApp.height/6)
 		birdApp.ctx.fill();
 	}
+	console.log(cell);
 };
 
 birdApp.birdImage.onload = function () {

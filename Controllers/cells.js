@@ -3,21 +3,33 @@ birdApp.getCell = function (event) {
 	var yGrid;
 	var width = birdApp.width;
 	var height = birdApp.height;
-	if(0 < event.x && event.x < width/3 ){
+	if(0 < event.x && event.x < width/5 ){
 		xGrid = 0;
-	} else if ( width/3 <=event.x && event.x < 2*(width/3)) {
-		xGrid = (width/3);
-	} else if ( 2*(width/3) <=event.x && event.x < width) {
-		xGrid = 2*(width/3);
+	} else if ( width/5 <=event.x && event.x < 2*(width/5)) {
+		xGrid = (width/5);
+	} else if ( 2*(width/5) <=event.x && event.x < 3*width/5) {
+		xGrid = 2*(width/5);
+	} else if ( 3*(width/5) <=event.x && event.x < 4*width/5) {
+		xGrid = 3*(width/5);
+	} else if ( 4*(width/5) <=event.x && event.x < width) {
+		xGrid = 4*(width/5);
 	}
 
-	if( (height/5) <=event.y && event.y< 2*(height/5)) {
-		yGrid = height/5;
-	} else if (2*(height/5)<=event.y && event.y < 3*(height/5)) {
-		yGrid = 2*(height/5);
-	} else if (3*(height/5)<=event.y && event.y < 4*(height/5)) {
-		yGrid = 3*(height/5);
+	if( 2*(height/9) <=event.y && event.y< 3*(height/9)) {
+		yGrid = 2*height/9;
+	} else if (3*(height/9)<=event.y && event.y < 4*(height/9)) {
+		yGrid = 3*(height/9);
+	} else if (4*(height/9)<=event.y && event.y < 5*(height/9)) {
+		yGrid = 4*(height/9);
+	} else if (5*(height/9)<=event.y && event.y < 6*(height/9)) {
+		yGrid = 5*(height/9);
+	} else if (6*(height/9)<=event.y && event.y < 7*(height/9)) {
+		yGrid = 6*(height/9);
+	} else if (7*(height/9)<=event.y && event.y < 7*(height/9)) {
+		yGrid = 7*(height/9);
 	}
+
+
 	return {x: xGrid, y: yGrid};
 };
 
@@ -25,7 +37,7 @@ birdApp.randomise = function () {
 	var width = birdApp.width;
 	var height = birdApp.height;
 	var x = Math.random()*width;
-	var y = (height/5)+Math.random()*(3*height/5);
+	var y = (2*(height/8))+Math.random()*(5*height/8);
 	var cell = birdApp.getCell({x:x, y:y});
 	return cell
 };
