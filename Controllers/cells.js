@@ -25,9 +25,7 @@ birdApp.getCell = function (event) {
 		yGrid = 5*(height/9);
 	} else if (6*(height/9)<=event.y && event.y < 7*(height/9)) {
 		yGrid = 6*(height/9);
-	} else if (7*(height/9)<=event.y && event.y < 7*(height/9)) {
-		yGrid = 7*(height/9);
-	}
+	} 
 
 
 	return {x: xGrid, y: yGrid};
@@ -37,7 +35,7 @@ birdApp.randomise = function () {
 	var width = birdApp.width;
 	var height = birdApp.height;
 	var x = Math.random()*width;
-	var y = (2*(height/8))+Math.random()*(5*height/8);
+	var y = (2*(height/9))+Math.random()*(5*height/9);
 	var cell = birdApp.getCell({x:x, y:y});
 	return cell
 };
