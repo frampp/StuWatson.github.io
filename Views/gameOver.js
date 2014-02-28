@@ -11,7 +11,7 @@ birdApp.createTweetButton = function() {
 birdApp.drawGameOver = function() {
 	var textLeft = birdApp.width/9;
 	birdApp.drawBg();
-	birdApp.ctx.font="20px sans-serif";
+	birdApp.ctx.font=birdApp.height/30+"px sans-serif";
 	birdApp.ctx.fillText("Game Over. Score: " + birdApp.score, textLeft, birdApp.height/5);
 	birdApp.ctx.fillText("High Score: " + (birdApp.survivalMode ? localStorage.survHighScore : localStorage.timeHighScore), textLeft, 3*(birdApp.height/5));
 	birdApp.removeEventListeners();

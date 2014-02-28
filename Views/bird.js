@@ -15,8 +15,8 @@ birdApp.drawBird = function (cell, old) {
 			birdApp.ctx.drawImage(birdApp.oldImage, old.x, old.y, width/5, height/9);
 		}
 		birdApp.ctx.drawImage(birdApp.birdImage, cell.x, cell.y, width/5, height/9);
-		birdApp.ctx.font="28px sans-serif";
-		birdApp.ctx.fillText("Score"+birdApp.score, width/5, birdApp.height/6)
+		birdApp.ctx.font=(birdApp.height/30)+"28px sans-serif";
+		birdApp.ctx.fillText("Score: "+birdApp.score, width/5, birdApp.height/6)
 		birdApp.ctx.fill();
 	}
 	console.log(cell);
